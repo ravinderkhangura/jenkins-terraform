@@ -12,9 +12,8 @@ pipeline {
 
             }
         }
-    }
 
-    stages{
+
         stage('Terraform-innit'){
             steps{
                 sh "terraform innit"
