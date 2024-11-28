@@ -13,5 +13,12 @@ pipeline {
                 }
             }
         }
+    stage('Terraform init') { 
+            steps {
+                script {
+                    sh 'terraform init'
+                }
+            }
+        }
     }
 }
