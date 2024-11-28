@@ -20,5 +20,44 @@ pipeline {
                 }
             }
         }
+  stage('Terraform plan') { 
+            steps {
+                script {
+                    sh 'terraform plan'
+                }
+            }
+        }
+
+        stage('Terraform validate') { 
+            steps {
+                script {
+                    sh 'terraform validate'
+                }
+            }
+        }
+
+         stage('Terraform apply') { 
+            steps {
+                script {
+                    sh 'terraform apply --auto-approve'
+                }
+            }
+        }
+
+        stage('Approve to destroy'){
+            steps{
+                input message: 'Approve to Destroy', ok: 'Destroy'
+            }
+        }
+
+         stage('Terraform destroy') { 
+            steps {
+                script {
+                    sh 'terraform destroy --auto-approve'
+                }
+            }
+        }
+
     }
+
 }
