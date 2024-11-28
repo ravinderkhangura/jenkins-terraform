@@ -5,12 +5,12 @@ terraform {
       version = "5.78.0"
     }
   }
-  backend "s3" {
-    bucket = "cli-bucket-12"
-    key    = "terraform"
-    region = "us-east-1"
-    dynamodb_table = "Terraform-lock"
-  }
+  # backend "s3" {
+  #   bucket = "cli-bucket-12"
+  #   key    = "terraform"
+  #   region = "us-east-1"
+  #   dynamodb_table = "Terraform-lock"
+  # }
 }
 
 provider "aws" {
