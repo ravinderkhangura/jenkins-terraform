@@ -1,24 +1,17 @@
 pipeline {
-    agent any
-    options {
-        // Timeout counter starts AFTER agent is allocated
-        timeout(time: 1, unit: 'SECONDS')
-    }
+    agent any 
     stages {
-        stage('Git checkout') {
+        stage('Checkout from Git') { 
             steps {
-              git branch: 'main',
-              url: 'https://github.com/ravinderkhangura/jenkins-terraform.git'   
-
+                git branch: 'main' , url: 'https://github.com/ravinderkhangura/jenkins-terraform.git'
             }
         }
-
-
-        stage('Terraform-init'){
-            steps{
-                sh "terraform init -reconfigure"
+        stage('Terraform version') { 
+            steps {
+                script {
+                    sh 'terraform --version'
+                }
             }
-
         }
     }
 }
